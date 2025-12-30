@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детейлинг</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #fff; background: linear-gradient(135deg, #0c0c0c 0%, #1a0033 50%, #000 100%); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header { background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+        .logo { font-size: 1.8rem; font-weight: bold; color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: #fff; text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: #00ffff; text-shadow: 0 0 10px #00ffff; }
+
+        /* Hero */
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: url('hero-bg.jpg') center/cover; position: relative; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); }
+        .hero-content { position: relative; z-index: 2; }
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; text-shadow: 0 0 20px #ff00ff; animation: glow 2s ease-in-out infinite alternate; }
+        .hero p { font-size: 1.5rem; margin-bottom: 2rem; }
+        .hero-photo { max-width: 400px; max-height: 300px; border-radius: 20px; box-shadow: 0 0 30px #00ffff; margin: 0 auto; }
+        @keyframes glow { from { text-shadow: 0 0 20px #ff00ff; } to { text-shadow: 0 0 30px #ff00ff, 0 0 40px #00ffff; } }
+
+        /* Section */
+        section { padding: 5rem 0; }
+        h2 { text-align: center; font-size: 3rem; margin-bottom: 3rem; color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+
+        /* About */
+        .about { background: rgba(255,255,255,0.05); }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .about-text p { font-size: 1.2rem; margin-bottom: 1.5rem; }
+        .about-img { text-align: center; }
+        .about-img img { max-width: 80%; border-radius: 20px; box-shadow: 0 0 30px #00ffff; }
+
+        /* Services */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .service-card { background: rgba(0,0,0,0.5); padding: 2rem; border-radius: 20px; text-align: center; transition: transform 0.3s; border: 1px solid #ff00ff; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 0 30px #ff00ff; }
+        .service-card h3 { color: #00ffff; margin-bottom: 1rem; }
+
+        /* Portfolio */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+.portfolio-item {
+    position: relative;
+    height: 400px; /* Фиксированная высота */
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+}
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.6) 100%);
+    padding: 2.5rem 1.5rem 2rem;
+    color: #fff;
+    min-height: 140px;
+    backdrop-filter: blur(8px);
+    border-radius: 0 0 20px 20px;
+}
+.portfolio-overlay h3 {
+    color: #ff00ff;
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 10px #ff00ff;
+    line-height: 1.3;
+}
+.portfolio-overlay p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Мобильные исправления */
+@media (max-width: 768px) {
+    .portfolio-item { height: 320px; }
+    .portfolio-overlay {
+        padding: 2rem 1rem 1.5rem;
+        min-height: 120px;
+    }
+    .portfolio-overlay h3 { font-size: 1.2rem; }
+    .portfolio-overlay p { font-size: 1rem; }
+}
+
+
+	/* Footer */
+        footer { background: rgba(0,0,0,0.9); text-align: center; padding: 2rem 0; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo"></div>
+            <ul class="nav-links">
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#services">Навыки</a></li>
+                <li><a href="#portfolio">Портфолио</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Анастасия Гапочкина</h1>
+            <p>Детейлер-стажер (Ростов-на-Дону). Химчистка, полировка, керамика. Ищу место в студии.</p>
+            <img src="hero-photo.jpg" alt="Фото мастера" class="hero-photo">
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Обо мне</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Привет! Я начинающий детейлер из Ростова-на-Дону. С детства люблю автомобили и мечтаю открыть студию по восстанавлению старых авто.</p>
+                    <p>Прошла обучение по базовому детейлингу и уже провела первые работы. Работаю аккуратно, с современными средствами и гарантией результата.</p>
+                    <p>Готова к вызовам — от химчистки до защиты кузова!</p>
+		    <p>Компактные габариты позволяют мне залезть в самые труднодоступные места, а 6 лет в кроссфите - таскать сиденья и работать долго.</p>
+                </div>
+                <div class="about-img">
+                    <img src="photo.jpg" alt="Фото с рабочего места">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Мои навыки</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Химчистка салона</h3>
+                    <p>Глубокая очистка тканей, кожи, ковролина и пластика.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Полировка кузова</h3>
+                    <p>Устранение мелких царапин, блеск как у нового авто.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Нанесение керамики</h3>
+                    <p>Долговременная защита от грязи и УФ. Гидрофобный эффект!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Портфолио работ</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="largus.jpg" alt="Largus из-под Ozon">
+                    <div class="portfolio-overlay">
+                        <h3>Lada Largus (Ozon)</h3>
+			                  <p>Химчистка. До/после.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="bmw-polish.jpg" alt="BMW X5 полировка">
+                    <div class="portfolio-overlay">
+                        <h3>TODO</h3>
+                        <p>---</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="audi-ceramic.jpg" alt="Audi Q7 керамика">
+                    <div class="portfolio-overlay">
+                        <h3>TODO</h3>
+                        <p>---</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="vw-interior.jpg" alt="VW Passat химчистка">
+                    <div class="portfolio-overlay">
+                        <h3>TODO</h3>
+                        <p>---</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="lada-polish.jpg" alt="Lada Vesta полировка">
+                    <div class="portfolio-overlay">
+                        <h3>TODO</h3>
+                        <p>---</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="kia-ceramic.jpg" alt="Kia Sportage керамика">
+                    <div class="portfolio-overlay">
+                        <h3>TODO</h3>
+                        <p>---</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Анастасия Гапочкина. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
